@@ -1,9 +1,13 @@
+//#FF5600
+//#7C00FF
+//#F5386D
+//#0CE224
+
 import processing.video.*;
 import http.requests.*;
 
 ArrayList<Movie> movies;
 ArrayList<PFont> fonts;
-ArrayList<Slice> slices;
 
 int mode;
 
@@ -11,6 +15,8 @@ Scroller scroll;
 Visualizer visual;
 Capture myCap;
 FlowField flow;
+Slit scanner;
+
 
 void setup() {
   //fullScreen(P2D);
@@ -20,6 +26,7 @@ void setup() {
   slices = new ArrayList<Slice>();
 
   myCap = new Capture(this, Capture.list()[0]);
+  scanner = new Slit(myCap);
 
   frameRate(60);
   smooth(10);
@@ -75,18 +82,20 @@ void draw() {
     break;
 
   case 2:
-    for (Slice s : slices) {
-      s.display();
-      s.follow(flow);
-      s.borders();
-      s.update();
-    }
 
-    if (frameCount % 2000 == 0) {
-      noStroke();
-      fill(0);
-      rect(0, 0, width, height);
-    }
+    scanner.display();
+    //for (Slice s : slices) {
+    //  s.display();
+    //  s.follow(flow);
+    //  s.borders();
+    //  s.update();
+    //}
+
+    //if (frameCount % 2000 == 0) {
+    //  noStroke();
+    //  fill(0);
+    //  rect(0, 0, width, height);
+    //}
     break;
 
   default:
@@ -100,6 +109,11 @@ void getMessage() {
   println("Response Context: " + get.getContent());
 
   scroll.text = get.getContent();
+  if(scroll.hexIndex < 3) {
+   scroll.hexIndex ++; 
+  } else {
+   scroll.hexIndex = 0; 
+  }
 }
 
 void mousePressed() {

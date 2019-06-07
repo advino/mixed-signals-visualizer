@@ -7,8 +7,9 @@ class Scroller {
   int x;
   int y;
   int add;
-  
-  color c;
+  //                   "orange"   "blue"  "pink"   "green"
+  color[] hexValues = {#FF5600, #7C00FF, #F5386D, #0CE224};
+  int hexIndex;
 
   Scroller(String _text, ArrayList<PFont> _fonts) {
     fonts = _fonts;
@@ -20,12 +21,12 @@ class Scroller {
     activeFont[0] = fonts.get(0);
     activeFont[1] = fonts.get(1);
     
-    c = color(0,255,0);
+    hexIndex = 0;
   }
 
   void display() {
     for (int i = 128; i <= 2 * height; i += 128*2) {
-      fill(c);
+      fill(hexValues[hexIndex]);
       textSize(128);
       textFont(activeFont[0]);
       textAlign(RIGHT);
