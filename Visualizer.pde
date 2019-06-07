@@ -25,7 +25,7 @@ class Visualizer {
       count = 0;
     }
 
-    active.stop();
+    active.pause();
     active = movies.get(count);
     active.loop();
   }
