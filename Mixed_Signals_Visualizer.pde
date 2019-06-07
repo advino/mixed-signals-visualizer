@@ -1,8 +1,3 @@
-//#FF5600
-//#7C00FF
-//#F5386D
-//#0CE224
-
 import processing.video.*;
 import http.requests.*;
 
@@ -76,7 +71,6 @@ void draw() {
     break;
 
   case 2:
-
     scanner.display();
     break;
 
