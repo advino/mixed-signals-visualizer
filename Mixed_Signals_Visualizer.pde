@@ -18,8 +18,8 @@ Slit scanner;
 
 
 void setup() {
-  //fullScreen(P2D);
-  size(960, 540, P2D);
+  fullScreen(P2D);
+  //size(960, 540, P2D);
   movies = new ArrayList<Movie>();
   fonts = new ArrayList<PFont>();
 
